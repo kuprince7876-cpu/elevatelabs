@@ -1,48 +1,61 @@
-# Data Cleaning & Preprocessing - Titanic Dataset
+# Data Cleaning & Preprocessing – Titanic Dataset
 
-This repository contains the solution for Task 1: Data Cleaning & Preprocessing from the AI & ML Internship.
+## Overview
+
+This project focuses on **data cleaning and preprocessing of the Titanic dataset** as part of Task 1 of the AI & ML Internship. The main purpose of this task was to understand how raw and incomplete data can be cleaned and transformed into a suitable format for Machine Learning.
 
 ## Objective
-Learn how to clean and prepare raw data for Machine Learning.
 
-## Tools Used
-- Python
-- Pandas
-- NumPy
-- Matplotlib/Seaborn
-- Scikit-learn
+The objective of this task is to learn and apply different data preprocessing techniques, including handling missing values, converting categorical data, scaling numerical features, detecting outliers, and preparing the final dataset for Machine Learning.
+
+## Tools and Technologies Used
+
+* Python
+* Pandas
+* NumPy
+* Matplotlib
+* Seaborn
+* Scikit-learn
 
 ## Steps Performed
 
-1. **Imported the dataset and explored basic info** (nulls, data types)
-2. **Handled missing values** using mean/median/imputation:
-   - Numerical columns (age): filled with median
-   - Categorical columns (embarked, deck, embark_town): filled with mode
-3. **Converted categorical features into numerical** using one-hot encoding (pd.get_dummies with drop_first=True)
-4. **Normalized/standardized the numerical features** using StandardScaler (zero mean, unit variance)
-5. **Visualized outliers using boxplots and removed them** using IQR method (Q1 - 1.5*IQR, Q3 + 1.5*IQR)
+The Titanic dataset was first imported and examined to understand its structure, data types, and missing values. Missing values were then handled according to the type of data. The missing values in the **Age** column were replaced with the median value, while categorical columns such as **Embarked, Deck, and Embark_Town** were filled using their respective mode values.
 
-## Files in this repository
-- `preprocessing.py`: Python script performing all preprocessing steps
-- `titanic_original.csv`: Original Titanic dataset
-- `titanic_processed.csv`: Cleaned and preprocessed dataset
-- `outlier_boxplots.png`: Visualization showing boxplots before and after outlier removal (for fare column)
+Categorical variables were converted into numerical form using **one-hot encoding** with `pd.get_dummies()` and `drop_first=True`. After that, numerical features were standardized using **StandardScaler**, which transforms the data to have a mean of zero and a standard deviation of one.
+
+Outliers were identified using **boxplots** and the **Interquartile Range (IQR) method**. Values outside the range of **Q1 − 1.5 × IQR** and **Q3 + 1.5 × IQR** were considered outliers and removed from the dataset.
+
+## Files Included
+
+* **preprocessing.py** – Python script containing the complete preprocessing process.
+* **titanic_original.csv** – Original Titanic dataset used for the project.
+* **titanic_processed.csv** – Final cleaned and preprocessed dataset.
+* **outlier_boxplots.png** – Boxplot visualization showing the data before and after outlier removal for the Fare column.
 
 ## Key Learnings
-- Different types of missing data (MCAR, MAR, MNAR)
-- Techniques for handling categorical variables (Label Encoding vs One-Hot Encoding)
-- Difference between normalization (Min-Max scaling) and standardization (Z-score normalization)
-- Methods to detect outliers (IQR method, boxplots, Z-score)
-- Importance of preprocessing in ML (improves model accuracy, reduces training time, handles missing data)
-- How preprocessing can affect model accuracy (both positively and negatively)
 
-## How to Run
-1. Ensure you have Python 3.x installed
-2. Install required packages: `pip install pandas numpy matplotlib seaborn scikit-learn`
-3. Run the script: `python3 preprocessing.py`
-4. The processed dataset will be saved as `titanic_processed.csv`
+Through this task, I learned how different types of missing data, such as **MCAR, MAR, and MNAR**, can affect a dataset. I also understood the difference between **Label Encoding and One-Hot Encoding** and when they are used.
+
+The project also helped me understand the difference between **Normalization (Min-Max Scaling)** and **Standardization (Z-score Scaling)**. In addition, I learned how boxplots, the IQR method, and Z-score can be used to identify outliers.
+
+Most importantly, this task showed how proper preprocessing can make data more suitable for Machine Learning by handling missing values, reducing unwanted variations, and potentially improving model performance. However, preprocessing techniques must be selected carefully because inappropriate data cleaning can also affect the accuracy of a model.
+
+## How to Run the Project
+
+Make sure that **Python 3.x** is installed on your system. Install the required libraries using:
+
+`pip install pandas numpy matplotlib seaborn scikit-learn`
+
+After installing the dependencies, run the preprocessing script:
+
+`python3 preprocessing.py`
+
+The processed dataset will be generated and saved as **titanic_processed.csv**.
 
 ## Results
-- Original dataset shape: (891, 15)
-- After processing and outlier removal: (598, 24)
-- Removed 293 outlier rows based on IQR method across numerical features
+
+* **Original dataset:** 891 rows × 15 columns
+* **Processed dataset:** 598 rows × 24 columns
+* **Rows removed:** 293
+
+A total of **293 rows were removed as outliers** based on the IQR method applied to the numerical features. The final dataset contains cleaned, encoded, and standardized data that can be used for further Machine Learning tasks.
